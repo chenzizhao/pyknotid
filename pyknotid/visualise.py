@@ -20,7 +20,7 @@ API documentation
 
 from __future__ import division
 
-import vispy
+# import vispy
 # vispy.use('PyQt5')
 
 import numpy as n
@@ -29,11 +29,6 @@ from colorsys import hsv_to_rgb
 from pyknotid.utils import ensure_shape_tuple, vprint
 import random
 from colorsys import hsv_to_rgb
-
-try:
-    from vispy.visuals.transforms import MatrixTransform
-except (AttributeError, ImportError):
-    from vispy.visuals.transforms import AffineTransform as MatrixTransform
 
 vispy_canvas = None
 
@@ -279,6 +274,10 @@ def plot_line_vispy(points, clf=True, tube_radius=1.,
         clear_vispy_canvas()
     canvas = vispy_canvas
     from vispy import app, scene, color
+    try:
+        from vispy.visuals.transforms import MatrixTransform
+    except (AttributeError, ImportError):
+        from vispy.visuals.transforms import AffineTransform as MatrixTransform
 
     if isinstance(cmap, str):
         from matplotlib.cm import get_cmap
@@ -326,6 +325,10 @@ def plot_lines_vispy(lines, clf=True, tube_radius=1.,
         clear_vispy_canvas()
     canvas = vispy_canvas
     from vispy import app, scene, color
+    try:
+        from vispy.visuals.transforms import MatrixTransform
+    except (AttributeError, ImportError):
+        from vispy.visuals.transforms import AffineTransform as MatrixTransform
 
     if not isinstance(tube_radius, list):
         tube_radius = [tube_radius for _ in range(len(lines))]
