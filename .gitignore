@@ -3,3 +3,4 @@
 *.c
 *.db
 *.egg-info
+build/
