@@ -120,7 +120,7 @@ class GaussCode(object):
         new_rows = []
 
         for row in gc._gauss_code:
-            keep = n.ones(len(row), dtype=n.bool)
+            keep = n.ones(len(row), dtype=bool)
             virtual_cs = n.argwhere(row[:, 0] < 0)
             indices = virtual_cs.flatten()
             for index in indices:

@@ -796,7 +796,7 @@ def remove_nearby_points(points):
     '''Takes a set of points, and removes those that are no distance from
     the previous one.'''
     points = points.copy()
-    keep = n.ones(len(points), dtype=n.bool)
+    keep = n.ones(len(points), dtype=bool)
 
     comparator = points[0]
     for i, point in enumerate(points):

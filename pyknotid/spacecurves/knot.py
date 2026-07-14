@@ -312,7 +312,7 @@ class Knot(SpaceCurve):
         points = self.points
         if num_samples == 0:
             num_samples = len(points)
-        indices = n.linspace(0, len(points), num_samples).astype(n.int)
+        indices = n.linspace(0, len(points), num_samples).astype(int)
 
         from pyknotid.spacecurves.openknot import OpenKnot
 

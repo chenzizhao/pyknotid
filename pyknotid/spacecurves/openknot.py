@@ -302,7 +302,7 @@ class OpenKnot(SpaceCurve):
         '''
         polys = self.alexander_polynomials(
             number_of_samples=number_of_samples, **kwargs)
-        alexs = n.round(polys[:, 2]).astype(n.int)
+        alexs = n.round(polys[:, 2]).astype(int)
 
         fracs = []
         length = float(len(alexs))
@@ -477,7 +477,7 @@ class OpenKnot(SpaceCurve):
         '''
         polys = self.virtual_checks(
             number_of_samples=number_of_samples, **kwargs)
-        alexs = n.round(polys[:, 2]).astype(n.int)
+        alexs = n.round(polys[:, 2]).astype(int)
 
         fracs = []
         length = float(len(alexs))
@@ -680,7 +680,7 @@ class OpenKnot(SpaceCurve):
         '''
         self_linkings = self.self_linkings(
             number_of_samples=number_of_samples, **kwargs)
-        self_linkings = n.round(self_linkings[:, 2]).astype(n.int)
+        self_linkings = n.round(self_linkings[:, 2]).astype(int)
 
         fracs = []
         length = float(len(self_linkings))
@@ -1124,7 +1124,7 @@ class OpenKnot(SpaceCurve):
 
             # Remove closing crossings to calculate self linking
             xs, ys = n.where(cs[:, :2] > len(k.points) - 1)
-            keeps = n.ones(len(cs), dtype=n.bool)
+            keeps = n.ones(len(cs), dtype=bool)
             for x in xs:
                 keeps[x] = False
             cs = cs[keeps]
@@ -1149,7 +1149,7 @@ class OpenKnot(SpaceCurve):
         polys, self_linkings = self._determinants_and_self_linkings(
             number_of_samples, **kwargs)
 
-        alexs = n.round(polys[:, 2]).astype(n.int)
+        alexs = n.round(polys[:, 2]).astype(int)
 
         fracs = []
         length = float(len(alexs))
@@ -1159,7 +1159,7 @@ class OpenKnot(SpaceCurve):
         det_fracs = sorted(fracs, key=lambda j: j[1])
 
 
-        self_linkings = n.round(self_linkings[:, 2]).astype(n.int)
+        self_linkings = n.round(self_linkings[:, 2]).astype(int)
 
         fracs = []
         length = float(len(self_linkings))
@@ -1211,7 +1211,7 @@ class OpenKnot(SpaceCurve):
 
             # Remove closing crossings to calculate self linking
             xs, ys = n.where(cs[:, :2] > len(k.points) - 1)
-            keeps = n.ones(len(cs), dtype=n.bool)
+            keeps = n.ones(len(cs), dtype=bool)
             for x in xs:
                 keeps[x] = False
             cs = cs[keeps]
@@ -1238,8 +1238,8 @@ class OpenKnot(SpaceCurve):
         ck_fraction = n.average(ck[:, -1])
         pv_fraction = n.average(pv[:, -1])
 
-        return ck_fraction, pv_fraction, n.average(pv[:, -1].astype(n.bool) |
-                                                   pk[:, -1].astype(n.bool))
+        return ck_fraction, pv_fraction, n.average(pv[:, -1].astype(bool) |
+                                                   pk[:, -1].astype(bool))
 
     def plot_vassiliev_spectrum(self, angles=100, max_crossings=8):
         v2 = self.vassiliev_degree_2_average()
